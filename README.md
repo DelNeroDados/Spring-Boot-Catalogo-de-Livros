@@ -25,6 +25,17 @@ O **Book Affix** é um sistema completo para gerenciar livros e autores, oferece
 * Backend robusto (Spring Boot, Java) com todas as operações REST necessárias
 * Frontend HTML+JS modular, organizado e com feedback visual
 
+### Screenshots das Telas
+
+### Buscar na API
+![Buscar na API](img_readme/screencapture-buscar_api.png)
+
+### Excluir Livro Local
+![Excluir Livro Local](img_readme/screencapture-excluir_local.png)
+
+### Buscar Livro Local
+![Buscar Livro Local](img_readme/screencapture-buscar_local.png)
+
 O sistema foi desenhado para ser extensível, seguro, performático e fácil de usar.
 
 ---
@@ -33,7 +44,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **2. Diagrama de Classes — Backend (Java)**
 
-![Diagrama de Classes — Backend](img_readme/Diagrama%20de%20Classes%20—%20Backend.png)
+![Diagrama de Classes — Backend](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Diagrama%20de%20Classes%20%E2%80%94%20Backend.svg)
 
 ---
 
@@ -41,7 +52,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **3. Diagrama de Classes — Frontend (JavaScript)**
 
-![Diagrama de Classes — Frontend](img_readme/Diagrama%20de%20Classes%20—%20Frontend.png)
+![Diagrama de Classes — Frontend](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Diagrama%20de%20Classes%20%E2%80%94%20Frontend.svg)
 
 ---
 
@@ -49,7 +60,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **4. Diagrama de Componentes (Visão Alto Nível)**
 
-![Diagrama de Componentes](img_readme/Diagrama%20de%20Componentes.png)
+![Diagrama de Componentes](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Diagrama%20de%20Componentes.svg)
 
 ---
 
@@ -57,8 +68,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **5. Diagrama ER (Entidade-Relacionamento Simplificado)**
 
-![Diagrama ER](img_readme/Diagrama%20ER.png)
-
+![Diagrama ER](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Diagrama%20ER.svg)
 
 ---
 
@@ -66,7 +76,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **6. Diagrama de Sequência — Exemplo: Exclusão de Livro**
 
-![Diagrama de Sequência Exclusão de Livro](img_readme/Diagrama%20de%20Sequência%20Exclusão%20de%20Livro.png)
+![Diagrama de Sequência Exclusão de Livro](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Diagrama%20de%20Sequ%C3%AAncia%20Exclus%C3%A3o%20de%20Livro.svg)
 
 ---
 
@@ -80,7 +90,7 @@ Todos os processos centrais do Book Affix ilustrados com diagramas e descritos e
 
 ### **7.1 Salvar Livro da API Externa no Sistema**
 
-![Salvar Livro da API Externa no Sistema](img_readme/Salvar%20Livro%20da%20API%20Externa%20no%20Sistema.png)
+![Salvar Livro da API Externa no Sistema](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Salvar%20Livro%20da%20API%20Externa%20no%20Sistema.svg)
 
 
 **Passo a passo:**
@@ -96,12 +106,12 @@ Todos os processos centrais do Book Affix ilustrados com diagramas e descritos e
 
 #### **No banco local**
 
-![No banco local](img_readme/No%20banco%20local.png)
+![No banco local](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/No%20banco%20local.svg)
 
 
 #### **Na API externa**
 
-![Na API externa](img_readme/Na%20API%20externa.png)
+![Na API externa](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Salvar%20Livro%20da%20API%20Externa%20no%20Sistema.svg)
 
 
 **Passo a passo:**
@@ -112,7 +122,7 @@ Todos os processos centrais do Book Affix ilustrados com diagramas e descritos e
 
 ### **7.3 Exclusão de Livro do Sistema**
 
-![Exclusão de Livro do Sistema](img_readme/Exclusão%20de%20Livro%20do%20Sistema.png)
+![Exclusão de Livro do Sistema](https://github.com/DelNeroDados/Spring-Boot-Catalogo-de-Livros/blob/1cc394a168d64ea1c2e677e475a5be09186c6f13/img_readme/Exclus%C3%A3o%20de%20Livro%20do%20Sistema.svg)
 
 **Passo a passo:**
 
