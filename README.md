@@ -33,118 +33,7 @@ O sistema foi desenhado para ser extensível, seguro, performático e fácil de 
 
 ## **2. Diagrama de Classes — Backend (Java)**
 
-```plantuml
-@startuml
-package com.BookAffix.Book_Affix.model {
-  class Autor {
-    - Long id
-    - String nome
-    - List<Livro> livros
-  }
-  class Livro {
-    - Long id
-    - String titulo
-    - String resumo
-    - String idioma
-    - String capa
-    - int downloads
-    - Autor autor
-    - List<String> subjects
-  }
-}
-
-package com.BookAffix.Book_Affix.dto {
-  class AutorDTO {
-    - Long id
-    - String nome
-  }
-  class LivroDTO {
-    - Long id
-    - String titulo
-    - String resumo
-    - String idioma
-    - String capa
-    - int downloads
-    - Long autorId
-    - List<String> subjects
-  }
-  class LivroResponseDTO {
-    - Long id
-    - String titulo
-    - String resumo
-    - String idioma
-    - String capa
-    - int downloads
-    - AutorDTO autor
-    - List<String> subjects
-  }
-}
-
-package com.BookAffix.Book_Affix.repository {
-  interface AutorRepository
-  interface LivroRepository
-}
-
-package com.BookAffix.Book_Affix.service {
-  class AutorService {
-    + AutorDTO findById(Long id)
-    + List<AutorDTO> findAll()
-    + AutorDTO save(AutorDTO autorDTO)
-    + void delete(Long id)
-  }
-  class LivroService {
-    + LivroDTO findById(Long id)
-    + List<LivroDTO> findAll()
-    + LivroDTO save(LivroDTO livroDTO)
-    + void delete(Long id)
-    + List<LivroDTO> findByTitulo(String titulo)
-    + List<LivroDTO> findByIdioma(String idioma)
-    + List<LivroDTO> findByTituloParcial(String parcial)
-    + List<LivroDTO> buscarLivrosNaApi(String termo)
-  }
-  class GutendexClient {
-    + List<LivroDTO> buscarLivros(String termo)
-  }
-}
-
-package com.BookAffix.Book_Affix.controller {
-  class AutorController {
-    + getAll()
-    + getById(Long id)
-    + create(AutorDTO autorDTO)
-    + delete(Long id)
-  }
-  class LivroController {
-    + getAll()
-    + getById(Long id)
-    + create(LivroDTO livroDTO)
-    + delete(Long id)
-    + findByTitulo(String titulo)
-    + findByIdioma(String idioma)
-    + findByTituloParcial(String parcial)
-    + importarDaApi(String titulo)
-    + buscarNaApi(String termo)
-  }
-}
-
-AppConsoleRunner
-BookAffixApplication
-CorsConfig
-
-' Relacionamentos
-Autor "1" -- "0..*" Livro : escreve
-Livro "*" -- "1" Autor : tem
-
-LivroDTO "*" .. "1" AutorDTO
-LivroResponseDTO "*" .. "1" AutorDTO
-
-LivroController ..> LivroService
-AutorController ..> AutorService
-LivroService ..> LivroRepository
-AutorService ..> AutorRepository
-LivroService ..> GutendexClient
-@enduml
-```
+![Diagrama de Classes — Backend](img_readme/Diagrama%20de%20Classes%20—%20Backend.png)
 
 ---
 
@@ -152,40 +41,7 @@ LivroService ..> GutendexClient
 
 ## **3. Diagrama de Classes — Frontend (JavaScript)**
 
-```plantuml
-@startuml
-class bookaffix.js {
-  - API_LOCAL: string
-  - API_GUTENDEX: string
-  + showLoader(show: boolean): void
-  + renderBooks(books: Array, options: Object): void
-}
-
-class buscar_api.html {
-  + fetchApiBooks(query: string): void
-  + saveBook(book, cardElement): void
-  + updateDropdowns(books, langId, subjId): void
-}
-
-class buscar_local.html {
-  + fetchLocalBooks(): void
-  + updateDropdowns(books, langId, subjId): void
-}
-
-class excluir_local.html {
-  + fetchLocalBooks(): void
-  + deleteBook(id: number, cardElement): void
-}
-
-class CustomConfirmModal {
-  + showConfirmModal(message: string, onConfirm: function): void
-}
-
-bookaffix.js <|-- buscar_api.html
-bookaffix.js <|-- buscar_local.html
-bookaffix.js <|-- excluir_local.html
-@enduml
-```
+![Diagrama de Classes — Frontend](img_readme/Diagrama%20de%20Classes%20—%20Frontend.png)
 
 ---
 
@@ -193,42 +49,7 @@ bookaffix.js <|-- excluir_local.html
 
 ## **4. Diagrama de Componentes (Visão Alto Nível)**
 
-```plantuml
-@startuml
-package "Front-end" {
-  [buscar_local.html]
-  [buscar_api.html]
-  [excluir_local.html]
-  [style.css]
-  [bookaffix.js]
-}
-package "Back-end API (Spring Boot)" {
-  [LivroController]
-  [AutorController]
-  [LivroService]
-  [AutorService]
-  [GutendexClient]
-  [LivroRepository]
-  [AutorRepository]
-}
-package "Banco de Dados"
-package "API Externa Gutendex"
-
-[buscar_local.html] --> [bookaffix.js]
-[buscar_api.html] --> [bookaffix.js]
-[excluir_local.html] --> [bookaffix.js]
-[bookaffix.js] ..> [LivroController]
-[bookaffix.js] ..> [AutorController]
-[LivroController] --> [LivroService]
-[AutorController] --> [AutorService]
-[LivroService] --> [LivroRepository]
-[AutorService] --> [AutorRepository]
-[LivroService] ..> [GutendexClient]
-[GutendexClient] ..> [API Externa Gutendex]
-[LivreRepository] ..> [Banco de Dados]
-[AutorRepository] ..> [Banco de Dados]
-@enduml
-```
+![Diagrama de Componentes](img_readme/Diagrama%20de%20Componentes.png)
 
 ---
 
@@ -236,24 +57,8 @@ package "API Externa Gutendex"
 
 ## **5. Diagrama ER (Entidade-Relacionamento Simplificado)**
 
-```plantuml
-@startuml
-entity Autor {
-  * id : Long <<PK>>
-  * nome : String
-}
-entity Livro {
-  * id : Long <<PK>>
-  * titulo : String
-  * resumo : String
-  * idioma : String
-  * capa : String
-  * downloads : int
-  * autor_id : Long <<FK>>
-}
-Autor ||--o{ Livro : escreve
-@enduml
-```
+![Diagrama ER](img_readme/Diagrama%20ER.png)
+
 
 ---
 
@@ -261,28 +66,7 @@ Autor ||--o{ Livro : escreve
 
 ## **6. Diagrama de Sequência — Exemplo: Exclusão de Livro**
 
-```plantuml
-@startuml
-actor Usuario
-participant "buscar_local.html\n(bookaffix.js)" as FE
-participant "LivroController" as Controller
-participant "LivroService" as Service
-participant "LivroRepository" as Repo
-participant "Banco de Dados" as DB
-
-Usuario -> FE : Clica em "Excluir"
-FE -> FE : showConfirmModal("Tem certeza?")
-FE -> Controller : DELETE /livros/{id}
-Controller -> Service : delete(id)
-Service -> Repo : deleteById(id)
-Repo -> DB : Remove registro
-DB --> Repo : Confirma remoção
-Repo --> Service : OK
-Service --> Controller : OK
-Controller --> FE : 200 OK
-FE -> FE : Remove card da tela
-@enduml
-```
+![Diagrama de Sequência Exclusão de Livro](img_readme/Diagrama%20de%20Sequência%20Exclusão%20de%20Livro.png)
 
 ---
 
@@ -296,26 +80,8 @@ Todos os processos centrais do Book Affix ilustrados com diagramas e descritos e
 
 ### **7.1 Salvar Livro da API Externa no Sistema**
 
-```plantuml
-@startuml
-start
-:Usuário clica em "Salvar no sistema";
-:JS chama saveBook(book, card);
-:Exibe loader;
-:POST /livros/importar-da-api com título do livro;
-partition Backend {
-  :LivroController recebe POST;
-  :LivroService chama GutendexClient;
-  :GutendexClient busca livro na API externa;
-  :LivroService converte resposta para objeto Livro;
-  :LivroRepository salva livro no banco;
-  :LivroController responde sucesso;
-}
-:Oculta loader;
-:Botão muda para "Salvo!" e é desabilitado;
-stop
-@enduml
-```
+![Salvar Livro da API Externa no Sistema](img_readme/Salvar%20Livro%20da%20API%20Externa%20no%20Sistema.png)
+
 
 **Passo a passo:**
 
@@ -330,38 +96,13 @@ stop
 
 #### **No banco local**
 
-```plantuml
-@startuml
-start
-:Usuário digita termo na barra de busca;
-:Envia formulário (searchForm.onsubmit);
-:JavaScript lê valor do campo de busca;
-:Filtra allBooks (já carregados do backend);
-if (termo encontrado?) then (sim)
-  :Exibe livros filtrados na tela;
-else (não)
-  :Mostra mensagem "Nenhum livro encontrado";
-endif
-stop
-@enduml
-```
+![No banco local](img_readme/No%20banco%20local.png)
+
 
 #### **Na API externa**
 
-```plantuml
-@startuml
-start
-:Usuário digita termo na barra de busca;
-:Envia formulário (apiForm.onsubmit);
-:JS chama fetchApiBooks(termo);
-:Exibe loader;
-:JS faz GET na API externa (Gutendex) com termo;
-:Recebe lista de livros;
-:Oculta loader;
-:Exibe livros filtrados na tela;
-stop
-@enduml
-```
+![Na API externa](img_readme/Na%20API%20externa.png)
+
 
 **Passo a passo:**
 
@@ -371,27 +112,7 @@ stop
 
 ### **7.3 Exclusão de Livro do Sistema**
 
-```plantuml
-@startuml
-start
-:Usuário clica em "Excluir";
-:Abre modal de confirmação customizada;
-if (Usuário confirma) then (Sim)
-  :Exibe loader;
-  :JS faz DELETE /livros/{id};
-  partition Backend {
-    :LivroController recebe DELETE;
-    :LivroService remove do banco;
-    :LivroController responde sucesso;
-  }
-  :Oculta loader;
-  :Livro some da tela;
-else (Não)
-  :Fecha modal, nada acontece;
-endif
-stop
-@enduml
-```
+![Exclusão de Livro do Sistema](img_readme/Exclusão%20de%20Livro%20do%20Sistema.png)
 
 **Passo a passo:**
 
