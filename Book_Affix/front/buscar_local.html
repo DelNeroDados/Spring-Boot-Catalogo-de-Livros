@@ -1,0 +1,50 @@
+<!-- buscar_local.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Affix - Livros Salvos</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Book Affix - Livros Salvos</h1>
+    <nav>
+
+<div class="fab-container">
+  <a href="buscar_local.html" class="fab-btn" title="Ver Livros">
+    <span aria-hidden="true">&#128214;</span>
+  </a>
+  <span class="fab-tooltip">Ver Livros</span>
+  <a href="buscar_api.html" class="fab-btn" title="Buscar na API">
+    <span aria-hidden="true">&#128269;</span>
+  </a>
+  <span class="fab-tooltip">Buscar na API</span>
+  <a href="excluir_local.html" class="fab-btn" title="Excluir Livro">
+    <span aria-hidden="true">&#128465;</span>
+  </a>
+  <span class="fab-tooltip">Excluir Livro</span>
+</div>
+
+      	<form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Buscar por título ou assunto..." autocomplete="off" />
+        <select id="languageFilter"><option value="">Idioma</option></select>
+        <select id="subjectFilter"><option value="">Assunto</option></select>
+        <button type="submit">Buscar</button>
+        <button type="button" id="listAllBtn">Listar Todos</button>
+        <button type="button" id="sortDownloadsBtn">Ordenar por Downloads</button>
+        <button type="button" id="sortAlphaBtn">Ordem Alfabética</button>
+      </form>
+    </nav>
+  </header>
+  <main>
+    <section id="books-container"></section>
+    <section id="loader" class="hide"><div class="spinner"></div> Carregando...</section>
+  </main>
+  <footer>
+	<p>Del Nero Dados • Buscar na API • 2025</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

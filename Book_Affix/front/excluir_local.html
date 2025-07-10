@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Affix - Excluir Livros Salvos</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="excluir_local">Book Affix - Excluir Livros Salvos</h1>
+    <nav>
+<div class="fab-container">
+  <a href="buscar_local.html" class="fab-btn" title="Ver Livros">
+    <span aria-hidden="true">&#128214;</span>
+  </a>
+  <span class="fab-tooltip">Ver Livros</span>
+  <a href="buscar_api.html" class="fab-btn" title="Buscar na API">
+    <span aria-hidden="true">&#128269;</span>
+  </a>
+  <span class="fab-tooltip">Buscar na API</span>
+  <a href="excluir_local.html" class="fab-btn" title="Excluir Livro">
+    <span aria-hidden="true">&#128465;</span>
+  </a>
+  <span class="fab-tooltip">Excluir Livro</span>
+</div>
+    </nav>
+  </header>
+  <main>
+    <section id="books-container"></section>
+    <section id="loader" class="hide"><div class="spinner"></div> Carregando...</section>
+  </main>
+
+
+<div id="customConfirm" class="modal hide">
+  <div class="modal-content">
+    <p>Tem certeza que deseja excluir este livro?</p>
+    <div class="modal-actions">
+      <button id="modalOk">Excluir</button>
+      <button id="modalCancel" class="cancel">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+    <p>Del Nero Dados • Excluir Livros • 2025</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
